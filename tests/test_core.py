@@ -23,6 +23,13 @@ def test_privacy_vault_unmasking():
     
     assert unmasked == "Contact Alice at 123-456-7890."
 
+import os
+# Ensure dummy keys are set BEFORE any module imports to prevent LangChain crashes
+os.environ["GROQ_API_KEY"] = "dummy_key"
+os.environ["COHERE_API_KEY"] = "dummy_key"
+os.environ["SUPABASE_URL"] = "https://dummy.supabase.co"
+os.environ["SUPABASE_SERVICE_ROLE_KEY"] = "dummy_key"
+
 from unittest.mock import MagicMock, patch
 
 def test_router_logic():
