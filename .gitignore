@@ -1,0 +1,8 @@
+.env
+.env.bak
+.venv
+__pycache__
+*.pyc
+nexus.db
+SECRET_DO_NOT_PUSH.txt
+LexiGuard_Env.bak

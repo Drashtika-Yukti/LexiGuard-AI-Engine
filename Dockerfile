@@ -1,0 +1,33 @@
+# --- STAGE 1: Build Stage ---
+FROM python:3.11-slim as builder
+
+WORKDIR /app
+
+# Install build dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install python dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir --prefix=/install -r requirements.txt
+
+# --- STAGE 2: Final Stage ---
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Copy installed dependencies from builder
+COPY --from=builder /install /usr/local
+
+# Copy application code
+COPY . .
+
+# Download spaCy model (Crucial for Privacy Shield)
+RUN python -m spacy download en_core_web_sm
+
+# Expose FastAPI port
+EXPOSE 8000
+
+# Run the production server
+CMD ["uvicorn", "main.py", "--host", "0.0.0.0", "--port", "8000"]

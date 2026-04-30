@@ -1,0 +1,14 @@
+fastapi
+uvicorn
+langchain
+langchain-groq
+langchain-cohere
+langgraph
+requests
+python-dotenv
+pydantic
+cohere
+pinecone-client
+# For local LLM integration
+ollama
+spacy
