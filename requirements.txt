@@ -12,7 +12,6 @@ pinecone-client
 ollama
 spacy
 supabase
-langchain-supabase
 ragas
 pypdf
 langchain-community
