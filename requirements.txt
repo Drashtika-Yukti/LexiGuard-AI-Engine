@@ -16,3 +16,5 @@ ragas
 pypdf
 langchain-community
 postgrest
+deepeval
+datasets

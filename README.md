@@ -78,6 +78,16 @@ Once these are added, every push to `main` will automatically build your images 
 
 ---
 
+## 🛡️ Trust & Evaluation Layer
+Nexus is one of the only Legal AI engines that provides **Automated Trust Scores** on every deployment:
+*   **RAGAS**: We measure *Faithfulness* and *Context Precision* to ensure no legal hallucinations occur.
+*   **DeepEval**: We run assertive LLM unit tests to verify legal correctness against Indian Statutes.
+*   **LangSmith**: Full observability and tracing for every decision the AI makes.
+
+Check the **GitHub Actions** logs after each push to see the latest "Legal Integrity Scores."
+
+---
+
 ## 📜 License
 This project is for professional enterprise use and adheres to strict data privacy standards.
 
