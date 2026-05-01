@@ -3,7 +3,7 @@ from typing import List
 from langchain_groq import ChatGroq
 from langchain_cohere import CohereEmbeddings
 from langchain_community.vectorstores import SupabaseVectorStore
-from supabase import create_client, Client
+from utils.supabase_client import supabase_client
 from pydantic import BaseModel, Field
 from core.state import AgentState
 from utils.privacy_vault import vault
@@ -20,7 +20,7 @@ class Facts(BaseModel):
 
 class RAGNodes:
     """
-    Core Intelligence Nodes for the Nexus RAG pipeline.
+    Core Intelligence Nodes for the Aegis RAG pipeline.
     Encapsulates logic for Privacy Masking, Vector Retrieval, 
     Relevance Grading, and Hallucination Judging.
     """
@@ -28,11 +28,7 @@ class RAGNodes:
         self.llm = ChatGroq(model="llama-3.3-70b-versatile", temperature=0)
         self.fast_llm = ChatGroq(model="llama-3.1-8b-instant", temperature=0)
         self.embeddings = CohereEmbeddings(model="embed-english-v3.0")
-        
-        self.sb_client = create_client(
-            os.environ.get("SUPABASE_URL"),
-            os.environ.get("SUPABASE_SERVICE_ROLE_KEY")
-        )
+        self.sb_client = supabase_client
 
     def mask_query(self, state: AgentState):
         return {"masked_query": vault.mask(state["original_query"])}

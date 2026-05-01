@@ -1,46 +1,53 @@
-import sqlite3
 import os
 import time
-from typing import List, Dict, Optional
+from typing import List, Dict
+from utils.supabase_client import supabase_client
 
-class NexusMemory:
+class AegisMemory:
     """
     Persistence layer for short-term conversation and long-term user context.
+    Uses Supabase (Postgres) for global, stateless persistence.
     """
-    def __init__(self, db_path: str = "data/nexus.db"):
-        self.db_path = db_path
-        self._init_db()
-
-    def _init_db(self):
-        os.makedirs(os.path.dirname(self.db_path), exist_ok=True)
-        with sqlite3.connect(self.db_path) as conn:
-            conn.execute("""
-                CREATE TABLE IF NOT EXISTS conversation (
-                    session_id TEXT,
-                    role TEXT,
-                    content TEXT,
-                    timestamp REAL
-                )
-            """)
-            conn.execute("""
-                CREATE TABLE IF NOT EXISTS facts (
-                    user_id TEXT,
-                    fact TEXT,
-                    timestamp REAL
-                )
-            """)
-            conn.commit()
+    def __init__(self):
+        self.client = supabase_client
 
     def add_message(self, session_id: str, role: str, content: str):
-        with sqlite3.connect(self.db_path) as conn:
-            conn.execute("INSERT INTO conversation VALUES (?, ?, ?, ?)",
-                         (session_id, role, content, time.time()))
+        """Persists a new message to the conversation table in Supabase."""
+        try:
+            self.client.table("conversations").insert({
+                "session_id": session_id,
+                "role": role,
+                "content": content,
+                "timestamp": time.time()
+            }).execute()
+        except Exception as e:
+            print(f"Memory Persistence Error: {e}")
 
-    def get_history(self, session_id: str, k: int = 5) -> List[Dict]:
-        with sqlite3.connect(self.db_path) as conn:
-            cursor = conn.execute("SELECT role, content FROM conversation WHERE session_id = ? ORDER BY timestamp DESC LIMIT ?",
-                                  (session_id, k))
-            rows = cursor.fetchall()
-            return [{"role": r, "content": c} for r, c in reversed(rows)]
+    def get_history(self, session_id: str, k: int = 10) -> List[Dict]:
+        """Retrieves the last K messages for a given session."""
+        try:
+            res = self.client.table("conversations") \
+                .select("role, content") \
+                .eq("session_id", session_id) \
+                .order("timestamp", desc=True) \
+                .limit(k) \
+                .execute()
+            
+            # Reverse to maintain chronological order for the LLM context
+            return [{"role": r['role'], "content": r['content']} for r in reversed(res.data)]
+        except Exception as e:
+            print(f"Memory Retrieval Error: {e}")
+            return []
 
-memory = NexusMemory()
+    def save_fact(self, user_id: str, fact: str):
+        """Saves a long-term fact about the user."""
+        try:
+            self.client.table("facts").insert({
+                "user_id": user_id,
+                "fact": fact,
+                "timestamp": time.time()
+            }).execute()
+        except Exception as e:
+            print(f"Fact Persistence Error: {e}")
+
+memory = AegisMemory()
