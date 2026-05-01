@@ -1,5 +1,9 @@
 import pytest
 import json
+import os
+import sys
+sys.path.append(os.getcwd())
+
 from deepeval.metrics import HallucinationMetric, GEval
 from deepeval.test_case import LLMTestCase
 from core.orchestrator import run_nexus
