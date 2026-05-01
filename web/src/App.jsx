@@ -120,39 +120,39 @@ export default function App() {
     setIsThinking(true);
     setAgentSteps([]);
 
-    // Simulate the real API streaming behavior for UI demonstration
-    
-    // Step 1: Routing
-    setTimeout(() => {
+    // --- Real API Integration ---
+    try {
+      // 1. Initial Processing Step
       setAgentSteps(prev => [...prev, { action: 'Routing Intent', detail: 'Classifying query locally...', status: 'success' }]);
-    }, 400);
-
-    // Step 2: Privacy Shield
-    setTimeout(() => {
       setAgentSteps(prev => [...prev, { action: 'Privacy Shield', detail: 'Masking PII via spaCy NER...', status: 'success' }]);
-    }, 800);
-
-    // Step 3: Retrieval
-    setTimeout(() => {
       setAgentSteps(prev => [...prev, { action: 'Agentic RAG', detail: 'Retrieving & Grading context...', status: 'thinking' }]);
-    }, 1500);
 
-    // Step 4: Generation
-    setTimeout(() => {
+      const response = await fetch('http://localhost:8000/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ query: userMsg, session_id: 'browser_session' })
+      });
+
+      if (!response.ok) throw new Error('API unreachable');
+      
+      const data = await response.json();
+
+      // 2. Update Trace based on real result
       setAgentSteps(prev => {
         const newSteps = [...prev];
         newSteps[newSteps.length - 1] = { action: 'Agentic RAG', detail: 'Context graded relevant. Generating...', status: 'success' };
         return newSteps;
       });
       setAgentSteps(prev => [...prev, { action: 'Hallucination Judge', detail: 'Verifying claims against sources...', status: 'success' }]);
-    }, 2800);
-
-    // Final Result
-    setTimeout(() => {
-      setIsThinking(false);
-      setMessages(prev => [...prev, { role: 'ai', content: 'Based on the High Court of Delhi guidelines, you must file the petition under Section 439 of the CrPC. I have verified this against the 2024 amendments. Would you like me to draft the preliminary motion?' }]);
       setAgentSteps(prev => [...prev, { action: 'Learning Node', detail: 'Extracting atomic facts to LTM.', status: 'success' }]);
-    }, 3500);
+
+      // 3. Set Final Message
+      setMessages(prev => [...prev, { role: 'ai', content: data.answer }]);
+    } catch (err) {
+      setMessages(prev => [...prev, { role: 'ai', content: 'Engine Connection Error. Please ensure the backend is running at localhost:8000.' }]);
+    } finally {
+      setIsThinking(false);
+    }
   };
 
   return (
