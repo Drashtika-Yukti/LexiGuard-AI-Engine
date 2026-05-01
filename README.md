@@ -1,8 +1,8 @@
 ---
 title: Aegis Legal AI
 emoji: ⚖️
-colorFrom: slate
-colorTo: emerald
+colorFrom: gray
+colorTo: green
 sdk: docker
 pinned: false
 ---
