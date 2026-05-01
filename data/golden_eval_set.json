@@ -1,0 +1,82 @@
+[
+    {
+        "question": "What is the punishment for theft under Section 303 of the Bharatiya Nyaya Sanhita?",
+        "ground_truth": "Section 303 of BNS prescribes punishment for theft which can extend to three years, or with fine, or both. For repeat offenders, the punishment is more severe."
+    },
+    {
+        "question": "Explain the essential elements of a valid contract under the Indian Contract Act, 1872.",
+        "ground_truth": "A valid contract requires offer, acceptance, lawful consideration, capacity to contract, free consent, and a lawful object."
+    },
+    {
+        "question": "What constitutes 'cruelty' as a ground for divorce under the Hindu Marriage Act?",
+        "ground_truth": "Cruelty includes both physical and mental cruelty that makes it impossible for the spouse to live with the other."
+    },
+    {
+        "question": "What is the period of limitation for filing a suit for recovery of money?",
+        "ground_truth": "Under the Limitation Act, the period for recovery of money is generally 3 years from the date the cause of action arises."
+    },
+    {
+        "question": "Define 'Copyright Infringement' according to the Copyright Act, 1957.",
+        "ground_truth": "Copyright infringement occurs when someone uses a copyrighted work without permission from the owner, such as reproducing or performing the work."
+    },
+    {
+        "question": "What are the rights of an arrested person under the BNSS (formerly CrPC)?",
+        "ground_truth": "Rights include the right to be informed of grounds of arrest, right to a lawyer, and right to be produced before a magistrate within 24 hours."
+    },
+    {
+        "question": "Explain the concept of 'Adverse Possession' in Indian Property Law.",
+        "ground_truth": "Adverse possession allows a person to claim ownership of land if they have occupied it openly and continuously for 12 years against the true owner."
+    },
+    {
+        "question": "What is the difference between a 'Cognizable' and 'Non-Cognizable' offense?",
+        "ground_truth": "In cognizable offenses, police can arrest without a warrant; in non-cognizable, a warrant is required."
+    },
+    {
+        "question": "What is the maximum duration for which a person can be kept in police remand?",
+        "ground_truth": "Under the new BNSS, the duration and conditions of police remand have been modified, typically extending up to 15 days in the first 40 or 60 days."
+    },
+    {
+        "question": "What are the grounds for challenging an Arbitral Award under the Arbitration and Conciliation Act?",
+        "ground_truth": "Grounds include incapacity of parties, invalidity of agreement, lack of notice, or the award being against public policy."
+    },
+    {
+        "question": "Define 'Negligence' under the Law of Torts.",
+        "ground_truth": "Negligence is the breach of a legal duty to take care which results in damage, undesired by the defendant, to the plaintiff."
+    },
+    {
+        "question": "What is the penalty for 'Cheating' under the Bharatiya Nyaya Sanhita?",
+        "ground_truth": "Cheating is addressed under BNS with punishments varying based on the nature of the fraud and the amount involved."
+    },
+    {
+        "question": "Explain the 'Doctrine of Indoor Management' in Corporate Law.",
+        "ground_truth": "It protects outsiders dealing with a company, assuming that internal procedures have been followed correctly."
+    },
+    {
+        "question": "What constitutes a 'Cyber Crime' under the Information Technology Act, 2000?",
+        "ground_truth": "Cyber crimes include hacking, data theft, identity theft, and distributing obscene material electronically."
+    },
+    {
+        "question": "What are the legal requirements for a valid Will in India?",
+        "ground_truth": "A Will must be in writing, signed by the testator, and attested by at least two witnesses."
+    },
+    {
+        "question": "What is 'Public Interest Litigation' (PIL) and who can file it?",
+        "ground_truth": "PIL is litigation for the protection of public interest, filed by any public-spirited person for the benefit of the oppressed."
+    },
+    {
+        "question": "Define 'Anticipatory Bail' and its purpose.",
+        "ground_truth": "Anticipatory bail is a direction to release a person on bail even before they are arrested, usually granted when someone fears false implication."
+    },
+    {
+        "question": "What is the liability of a Director in a Check Bounce case under the NI Act?",
+        "ground_truth": "A Director is liable if they were in charge of and responsible for the conduct of the business at the time of the offense."
+    },
+    {
+        "question": "Explain the concept of 'Res Judicata'.",
+        "ground_truth": "Res Judicata prevents the same parties from litigating a matter that has already been decided by a competent court."
+    },
+    {
+        "question": "What are the provisions for 'Bail' in non-bailable offenses?",
+        "ground_truth": "Bail in non-bailable offenses is a matter of court discretion, based on the severity of the crime and evidence."
+    }
+]
