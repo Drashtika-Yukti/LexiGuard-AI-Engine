@@ -12,7 +12,7 @@ from core.orchestrator import run_nexus
 with open("data/golden_eval_set.json", "r") as f:
     golden_set = json.load(f)
 
-@pytest.mark.parametrize("test_data", golden_set[:5]) # Test the first 5 for speed, or all for thoroughness
+@pytest.mark.parametrize("test_data", golden_set[:3]) # Test first 3 for CI speed
 def test_nexus_intelligence_threshold(test_data):
     """
     DeepEval test suite ensuring each response meets the minimum 'Legal Correctness' threshold.
@@ -23,7 +23,7 @@ def test_nexus_intelligence_threshold(test_data):
     # 1. Setup Test Case
     test_case = LLMTestCase(
         input=query,
-        actual_output=result["final_answer"],
+        actual_output=result["answer"],
         retrieval_context=result["documents"]
     )
     

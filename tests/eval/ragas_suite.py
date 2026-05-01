@@ -28,8 +28,8 @@ def run_ragas_eval():
     for i, q in enumerate(eval_questions):
         print(f"[{i+1}/{len(eval_questions)}] Processing: {q[:50]}...")
         # Run the real engine
-        result = run_nexus(q, "eval_session_v1")
-        answers.append(result["final_answer"])
+        result = run_nexus(q, f"eval_session_v{i}")
+        answers.append(result["answer"])
         contexts.append(result["documents"])
         
     # 2. Format for RAGAS

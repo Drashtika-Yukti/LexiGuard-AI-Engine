@@ -41,7 +41,8 @@ def run_nexus(query: str, session_id: str = "default"):
         return {
             "answer": final_ans,
             "intent": intent_result.category,
-            "hallucination_check": not result.get("hallucination_detected", False)
+            "hallucination_check": not result.get("hallucination_detected", False),
+            "documents": result.get("documents", [])
         }
     except Exception as e:
         logger.error(f"Engine Error: {str(e)}")
