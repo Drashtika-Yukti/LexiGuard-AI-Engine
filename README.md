@@ -1,94 +1,55 @@
-# ⚖️ Nexus Legal Intelligence Engine
+# ⚖️ LexiGuard AI Engine v1.0
+![Nexus CI Pipeline](https://github.com/Drashtika-Yukti/LexiGuard-AI-Engine/actions/workflows/ci.yml/badge.svg)
+![Nexus CD Pipeline](https://github.com/Drashtika-Yukti/LexiGuard-AI-Engine/actions/workflows/cd.yml/badge.svg)
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
-**Enterprise-Grade, Agentic RAG System with Privacy Shield & Multi-Agent Reasoning.**
-
-Nexus is a production-ready legal research engine that transforms complex legal documents into an interactive, secure intelligence library. Built with a "Privacy-First" architecture, it ensures that sensitive data never leaves your infrastructure while leveraging the reasoning power of state-of-the-art LLMs.
+**LexiGuard-AI-Engine** is a production-grade, privacy-first Legal Intelligence platform. It leverages **Agentic RAG** and **Multi-Agent Orchestration** to provide high-fidelity legal reasoning while strictly enforcing data privacy through local PII masking.
 
 ---
 
 ## 🚀 Key Features
-
-*   **🛡️ Privacy Shield**: Local PII masking using **spaCy NER**. Automatically detects and redacts Names, Organizations, and IDs before cloud transmission.
-*   **🧠 Agentic Reasoning**: Uses **LangGraph** for a multi-node workflow:
-    *   **Intent Routing**: Directs queries to the correct specialized agent.
-    *   **Self-Correction**: An internal **Grader** and **Judge** audit every retrieved fact to eliminate hallucinations.
-    *   **Atomic Learning**: Automatically extracts user facts into **Long-Term Memory (LTM)** for personalized research.
-*   **⚡ Hybrid Architecture**: 
-    *   **Python Engine**: LangGraph + FastAPI for complex reasoning.
-    *   **Go Ingestor**: High-speed, parallel document processing.
-    *   **Supabase (pgvector)**: Enterprise-scale vector search.
-*   **📊 World-Class UI**: Premium Glassmorphism dashboard with a real-time **Agent Reasoning Trace**.
+*   **Agentic RAG**: Self-grading retrieval system with hallucination detection.
+*   **Privacy Shield**: Local NER-based PII masking via spaCy before cloud transmission.
+*   **Elite DevOps**: 3-tier Docker orchestration (FastAPI + React + Go).
+*   **Automated Trust**: Integrated RAGAS and DeepEval metrics for legal integrity.
+*   **High Speed**: Legal ingestion powered by a high-performance Go microservice.
 
 ---
 
-## 🛠️ Tech Stack
-
-- **Core**: Python 3.11, LangChain, LangGraph
-- **Models**: Groq (Llama-3 70B & 8B), Cohere (v3 Embeddings)
-- **Vector DB**: Supabase (PostgreSQL pgvector)
-- **Frontend**: React, Vite, Tailwind CSS 4
-- **Performance**: Golang (Ingestion Service)
-- **Observability**: LangSmith
-
----
-
-## 📦 Deployment (Docker)
-
-Launch the entire ecosystem with a single command:
-
-```bash
-docker-compose up --build
-```
-
-This will spin up:
-1.  **Nexus Engine** (Port 8000)
-2.  **Nexus Dashboard** (Port 5173)
-3.  **Go Ingestor** (Port 8081)
-
----
-
-## 🧪 Validation & Testing
-
-The system has been battle-tested using a 4-phase evaluation framework:
-1.  **LangSmith Tracing**: 100% observability of reasoning nodes.
-2.  **RAGAS Accuracy**: 0.98+ scores in Faithfulness and Relevance.
-3.  **Promptfoo Security**: Verified 0% PII leakage to cloud providers.
-4.  **Stress Testing**: Statistical stability across batch queries (N=25).
-
----
-
-## ⚙️ CI/CD Pipeline
-
-The project includes a fully automated DevOps pipeline using **GitHub Actions**:
-*   **Continuous Integration (CI)**: Automatically runs `flake8` linting and `pytest` unit tests on every Push and Pull Request.
-*   **Continuous Deployment (CD)**: Automatically builds production Docker images and pushes them to the **GitHub Container Registry (GHCR)** on every merge to `main`.
+## 🛠️ Architecture
+- **Engine**: FastAPI + LangGraph + Groq Llama-3.
+- **Frontend**: React + Framer Motion + Glassmorphism UI.
+- **Ingestor**: Golang for massive document processing.
+- **Database**: Supabase (Vector Store) + SQLite (Session Memory).
 
 ---
 
 ## ⚙️ CI/CD Pipeline & Deployment Checklist
+The project includes a fully automated DevOps pipeline using **GitHub Actions**. To ensure the "Green Signal" in your repository, you must add the following **Secrets**:
 
-The project includes a fully automated DevOps pipeline using **GitHub Actions**. To ensure the "Green Signal" in your repository, you must add the following **Secrets** to your GitHub Repository Settings (`Settings > Secrets and variables > Actions`):
-
-1.  `GROQ_API_KEY`: Your Groq API Key.
-2.  `COHERE_API_KEY`: Your Cohere API Key.
-3.  `SUPABASE_URL`: Your Supabase Project URL.
-4.  `SUPABASE_SERVICE_ROLE_KEY`: Your Supabase Service Role Key.
-
-Once these are added, every push to `main` will automatically build your images and verify them with real integration tests.
+1.  `GROQ_API_KEY`
+2.  `COHERE_API_KEY`
+3.  `SUPABASE_URL`
+4.  `SUPABASE_SERVICE_ROLE_KEY`
 
 ---
 
 ## 🛡️ Trust & Evaluation Layer
-Nexus is one of the only Legal AI engines that provides **Automated Trust Scores** on every deployment:
-*   **RAGAS**: We measure *Faithfulness* and *Context Precision* to ensure no legal hallucinations occur.
-*   **DeepEval**: We run assertive LLM unit tests to verify legal correctness against Indian Statutes.
-*   **LangSmith**: Full observability and tracing for every decision the AI makes.
+Check the **GitHub Actions** logs after each push to see the latest "Legal Integrity Scores":
+*   **RAGAS**: Faithfulness & Context Precision.
+*   **DeepEval**: Assertive legal unit testing.
+*   **LangSmith**: Complete observability and decision tracing.
 
-Check the **GitHub Actions** logs after each push to see the latest "Legal Integrity Scores."
+---
+
+## 📦 Local Launch
+```powershell
+docker-compose up --build
+```
+- **Dashboard**: http://localhost:5173
+- **API Docs**: http://localhost:8000/docs
 
 ---
 
 ## 📜 License
-This project is for professional enterprise use and adheres to strict data privacy standards.
-
-*Generated by Antigravity AI Engine*
+This project is for professional enterprise use and adheres to strict data privacy standards. MIT Licensed.

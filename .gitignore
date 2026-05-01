@@ -1,8 +1,31 @@
+# Environment & Secrets
 .env
-.env.bak
-.venv
-__pycache__
-*.pyc
-nexus.db
 SECRET_DO_NOT_PUSH.txt
-LexiGuard_Env.bak
+*.key
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Data & Persistence
+data/*.db
+data/latest_eval_scores.json
+nexus.db
+
+# Node / Frontend
+node_modules/
+dist/
+.eslintcache
+
+# Docker
+.docker/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
