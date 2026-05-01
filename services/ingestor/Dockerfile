@@ -1,4 +1,4 @@
-FROM golang:alpine as builder
+FROM golang:alpine AS builder
 WORKDIR /app
 COPY . .
 RUN go build -o ingestor main.go
