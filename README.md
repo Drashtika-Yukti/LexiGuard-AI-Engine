@@ -1,3 +1,12 @@
+---
+title: Aegis Legal AI
+emoji: ⚖️
+colorFrom: slate
+colorTo: emerald
+sdk: docker
+pinned: false
+---
+
 # ⚖️ Aegis Legal AI v2.0
 ![Aegis CI Pipeline](https://github.com/Drashtika-Yukti/LexiGuard-AI-Engine/actions/workflows/ci.yml/badge.svg)
 ![Aegis CD Pipeline](https://github.com/Drashtika-Yukti/LexiGuard-AI-Engine/actions/workflows/cd.yml/badge.svg)
